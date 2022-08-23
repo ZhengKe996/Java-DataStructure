@@ -6,10 +6,10 @@ import Utils.SortingHelper;
 import java.util.Arrays;
 
 /**
- * 归并排序
+ * 归并排序 使用插入排序法优化归并排序
  */
-public class MergeSort<T>{
-    private MergeSort(){
+public class MergeSortTo<T>{
+    private MergeSortTo(){
     }
 
     public static <T extends Comparable<T>> void sort(T[] arr){
@@ -25,8 +25,10 @@ public class MergeSort<T>{
      * @param <T>
      */
     private static <T extends Comparable<T>> void sort(T[] arr,int l,int r){
-        if(l >= r) return;
-
+        if(r - l <= 15){
+            InsertionSort.sort(arr,l,r);
+            return;
+        }
         int mid = l + (r - l) / 2;
         sort(arr,l,mid);
         sort(arr,mid + 1,r);
@@ -68,6 +70,6 @@ public class MergeSort<T>{
     public static void main(String[] args){
         int n = 100000;
         Integer[] array = ArrayGenerator.generateRandomArray(n,n);
-        SortingHelper.sortTest("MergeSort",array);
+        SortingHelper.sortTest("MergeSortTo",array);
     }
 }
