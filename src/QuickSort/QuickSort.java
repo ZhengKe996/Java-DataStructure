@@ -1,6 +1,5 @@
 package QuickSort;
 
-
 import java.util.Random;
 
 /**
@@ -11,20 +10,20 @@ public class QuickSort{
     }
 
     public static <T extends Comparable<T>> void sort(T[] arr){
-        sort(arr,0,arr.length - 1);
+        Random rnd = new Random();
+        sort(arr,0,arr.length - 1,rnd);
     }
 
-    private static <T extends Comparable<T>> void sort(T[] arr,int l,int r){
+    private static <T extends Comparable<T>> void sort(T[] arr,int l,int r,Random rnd){
         if(l >= r) return;
         // 标定点索引
-        int p = partition(arr,l,r);
-        sort(arr,l,p - 1);
-        sort(arr,p + 1,r);
+        int p = partition(arr,l,r,rnd);
+        sort(arr,l,p - 1,rnd);
+        sort(arr,p + 1,r,rnd);
     }
 
-    private static <T extends Comparable<T>> int partition(T[] arr,int l,int r){
-        // 生成[l,r]之间的随机索引
-        int p = l + (new Random().nextInt(r - l + 1));
+    private static <T extends Comparable<T>> int partition(T[] arr,int l,int r,Random rnd){
+        int p = l + rnd.nextInt(r - l + 1);
         swap(arr,l,p);
         int j = l;
         for(int i = l + 1;i <= r;i++){
