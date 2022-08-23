@@ -1,9 +1,6 @@
 package QuickSort;
 
-import Utils.ArrayGenerator;
-import Utils.SortingHelper;
 
-import java.util.Arrays;
 
 /**
  * 快速排序
