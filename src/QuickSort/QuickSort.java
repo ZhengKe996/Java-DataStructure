@@ -1,6 +1,7 @@
 package QuickSort;
 
 
+import java.util.Random;
 
 /**
  * 快速排序
@@ -22,6 +23,9 @@ public class QuickSort{
     }
 
     private static <T extends Comparable<T>> int partition(T[] arr,int l,int r){
+        // 生成[l,r]之间的随机索引
+        int p = l + (new Random().nextInt(r - l + 1));
+        swap(arr,l,p);
         int j = l;
         for(int i = l + 1;i <= r;i++){
             if(arr[i].compareTo(arr[l]) < 0){
