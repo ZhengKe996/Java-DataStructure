@@ -29,6 +29,7 @@ public class SortingHelper{
         if(sortname.equals("SelectionSort")) Sort.SelectionSort.sort(arr);
         else if(sortname.equals("InsertionSort")) Sort.InsertionSort.sort(arr);
         else if(sortname.equals("MergeSort")) MergeSort.MergeSort.sort(arr);
+        else if(sortname.equals("MergeSortBU")) MergeSort.MergeSort.sortBU(arr);
 
         long endTime = System.nanoTime();
 //        for(T value: arr){
