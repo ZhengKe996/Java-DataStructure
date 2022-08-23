@@ -9,26 +9,24 @@ import java.util.Arrays;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class Solution{
-    private int res = 0;
-
     public int reversePairs(int[] nums){
         int[] temp = new int[nums.length];
-        sort(nums,0,nums.length - 1,temp);
+        return sort(nums,0,nums.length - 1,temp);
+    }
+
+    private int sort(int[] arr,int l,int r,int[] temp){
+        if(l >= r) return 0;
+        int res = 0;
+        int mid = l + (r - l) / 2;
+        res += sort(arr,l,mid,temp);
+        res += sort(arr,mid + 1,r,temp);
+        if(arr[mid] > (arr[mid + 1])) res += merge(arr,l,mid,r,temp);
         return res;
     }
 
-    private void sort(int[] arr,int l,int r,int[] temp){
-        if(l >= r) return;
-
-        int mid = l + (r - l) / 2;
-        sort(arr,l,mid,temp);
-        sort(arr,mid + 1,r,temp);
-        if(arr[mid] > (arr[mid + 1])) merge(arr,l,mid,r,temp);
-    }
-
-    private void merge(int[] arr,int l,int mid,int r,int[] temp){
+    private int merge(int[] arr,int l,int mid,int r,int[] temp){
         System.arraycopy(arr,l,temp,l,r - l + 1);
-        int i = l, j = mid + 1;
+        int i = l, j = mid + 1, res = 0;
 
         for(int k = l;k <= r;k++){
             if(i > mid){
@@ -46,5 +44,6 @@ public class Solution{
                 j++;
             }
         }
+        return res;
     }
 }
