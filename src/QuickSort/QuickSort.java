@@ -25,12 +25,21 @@ public class QuickSort{
     private static <T extends Comparable<T>> int partition(T[] arr,int l,int r,Random rnd){
         int p = l + rnd.nextInt(r - l + 1);
         swap(arr,l,p);
-        int j = l;
-        for(int i = l + 1;i <= r;i++){
-            if(arr[i].compareTo(arr[l]) < 0){
-                j++;
-                swap(arr,i,j);
+
+        int i = l + 1, j = r;
+
+        while(true){
+            while(i <= j && arr[i].compareTo(arr[l]) < 0){
+                i++;
             }
+            while(j >= i && arr[j].compareTo(arr[l]) > 0){
+                j--;
+            }
+            if(i >= j) break; // 所有元素遍历完，退出循环
+
+            swap(arr,i,j);
+            i++;
+            j--;
         }
         swap(arr,l,j);
         return j;
