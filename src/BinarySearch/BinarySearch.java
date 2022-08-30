@@ -18,4 +18,19 @@ public class BinarySearch{
         if(data[mid].compareTo(target) < 0) return search(data,mid + 1,r,target);
         return search(data,l,mid - 1,target);
     }
+
+    // > target 的最小值索引
+    public static <E extends Comparable<E>> int upper(E[] data,E target){
+        int l = 0, r = data.length;
+
+        // 在 data[l,r]求解
+        while(l < r){
+            int mid = l + (r - l) / 2;
+            if(data[mid].compareTo(target) <= 0)
+                l = mid + 1;
+            else
+                r = mid;
+        }
+        return l;
+    }
 }
