@@ -41,4 +41,19 @@ public class BinarySearch{
         if(u - 1 >= 0 && data[u - 1].compareTo(target) == 0) return u - 1;
         return u;
     }
+
+    // < target 的最大值索引
+    public static <E extends Comparable<E>> int lower(E[] data,E target){
+        int l = -1, r = data.length - 1;
+
+        // 在 data[l,r]求解
+        while(l < r){
+            int mid = l + (r - l) / 2;
+            if(data[mid].compareTo(target) >= 0)
+                r = mid - 1;
+            else
+                l = mid;
+        }
+        return l;
+    }
 }
