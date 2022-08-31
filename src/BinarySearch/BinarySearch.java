@@ -49,10 +49,10 @@ public class BinarySearch{
         // 在 data[l,r]求解
         while(l < r){
             int mid = l + (r - l) / 2;
-            if(data[mid].compareTo(target) >= 0)
-                r = mid - 1;
+            if(data[mid].compareTo(target) <= 0)
+                l = mid + 1;
             else
-                l = mid;
+                r = mid;
         }
         return l;
     }
