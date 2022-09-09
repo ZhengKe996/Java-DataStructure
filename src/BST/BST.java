@@ -93,6 +93,10 @@ public class BST<E extends Comparable<E>>{
             res.append(generateDepthString(depth) + "null\n");
             return;
         }
+        res.append(generateDepthString(depth) + node.e + "\n");
+        generateBSTString(node.left,depth + 1,res);
+        generateBSTString(node.right,depth + 1,res);
+
     }
 
     private String generateDepthString(int depth){
