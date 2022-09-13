@@ -94,6 +94,20 @@ public class BST<E extends Comparable<E>>{
         inOrder(node.right);
     }
 
+    // 二分搜索树 后序遍历
+    public void postOrder(){
+        postOrder(root);
+    }
+
+    private void postOrder(Node node){
+        if(node == null)
+            return;
+
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.println(node.e);
+    }
+
     @Override
     public String toString(){
         StringBuilder res = new StringBuilder();
