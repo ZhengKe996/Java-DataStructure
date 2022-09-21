@@ -1,5 +1,7 @@
 package BST;
 
+import java.util.Stack;
+
 public class BST<E extends Comparable<E>>{
     private class Node{
         E e;
@@ -107,6 +109,22 @@ public class BST<E extends Comparable<E>>{
         postOrder(node.right);
         System.out.println(node.e);
     }
+
+    // 二分搜索树 前序遍历 非递归
+    public void preOrderNR(){
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            Node cur = stack.pop();
+            System.out.println(cur.e);
+
+            if(cur.right != null)
+                stack.push(cur.right);
+            if(cur.left != null)
+                stack.push(cur.left);
+        }
+    }
+
 
     @Override
     public String toString(){
