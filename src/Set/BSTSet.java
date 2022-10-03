@@ -1,5 +1,9 @@
 package Set;
 
+/**
+ * 基于BST实现Set
+ * @param <E>
+ */
 public class BSTSet<E extends Comparable<E>> implements Set<E>{
 
     private BST<E> bst;
@@ -33,6 +37,4 @@ public class BSTSet<E extends Comparable<E>> implements Set<E>{
     public boolean isEmpty(){
         return bst.isEmpty();
     }
-
-
 }
