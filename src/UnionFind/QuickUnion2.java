@@ -3,14 +3,14 @@ package UnionFind;
 public class QuickUnion2 implements UF {
 
     private int[] parent;
-    private int[] sz;
+    private int[] rank;
 
     public QuickUnion2(int size) {
         parent = new int[size];
-        sz = new int[size];
+        rank = new int[size];
         for (int i = 0; i < size; i++) {
             parent[i] = i;
-            sz[i] = 1;
+            rank[i] = 1;
         }
     }
 
@@ -40,13 +40,14 @@ public class QuickUnion2 implements UF {
             return;
         }
 
-        // 根据两个元素所在树的元素个数不同判断合并方向，将元素个数少的集合合并到元素个数多的集合上
-        if (sz[pRoot] < sz[qRoot]) {
+        // 根据两个元素所在树的rank不同判断合并方向将rank低的集合合并到rank高的集合上
+        if (rank[pRoot] < rank[qRoot]) {
             parent[pRoot] = qRoot;
-            sz[qRoot] += sz[pRoot];
+        } else if (rank[qRoot] < rank[pRoot]) {
+            parent[qRoot] = pRoot;
         } else {
             parent[qRoot] = pRoot;
-            sz[pRoot] += sz[qRoot];
+            rank[pRoot] += 1;
         }
     }
 
